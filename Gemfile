@@ -7,6 +7,7 @@ end
 
 gem 'rails', '5.0.1'
 
+gem 'hamlit'
 gem 'jquery-rails'
 gem 'pg'
 gem 'puma'
