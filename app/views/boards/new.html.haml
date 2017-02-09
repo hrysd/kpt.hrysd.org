@@ -1,0 +1,13 @@
+%h1 KPT を始める
+
+= form_for @board do |f|
+  %fieldset
+    = f.label :title
+    = f.text_field :title
+
+  %fieldset
+    = f.label :permalink
+    = f.text_field :permalink
+
+  %fieldset
+    = f.submit
