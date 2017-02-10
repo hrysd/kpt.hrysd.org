@@ -1,6 +1,8 @@
 require 'securerandom'
 
 class Board < ApplicationRecord
+  has_many :remarks
+
   validates :title,     presence: true
   validates :permalink, presence: true
 
