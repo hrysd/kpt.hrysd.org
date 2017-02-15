@@ -10,7 +10,9 @@ module RemarksMethods
 
     remark = board.remarks.create!(remark_params.merge(kind: kind))
 
-    render json: remark
+    broadcast_remark remark
+
+    head :created
   end
 
   private
@@ -21,5 +23,9 @@ module RemarksMethods
 
   def remark_params
     params.require(kind).permit(:content)
+  end
+
+  def broadcast_remark(remark)
+    ActionCable.server.broadcast "board_#{params[:permalink]}", remark
   end
 end

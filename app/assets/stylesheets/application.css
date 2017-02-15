@@ -14,7 +14,7 @@ body {
   height: 100%;
 }
 
-.keep, .problem, .try {
+.keep, .problem, .tri {
   display: flex;
   flex-direction: column;
 }
@@ -34,7 +34,7 @@ ul {
   background: red;
 }
 
-.try {
+.tri {
   height: 100%;
   background: blue;
 }

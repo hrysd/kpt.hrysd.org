@@ -8,12 +8,12 @@
         - @board.remarks.keep.each do |keep|
           %li= keep.content
 
-      %form.inline-form
+      %form.inline-form{data: {resource: 'keeps', param: 'keep'}}
         .form-item
           %input(type='text')
 
         .form-item
-          %button.js-add-keep Add
+          %button Add
 
     %section.problem
       %header
@@ -23,15 +23,15 @@
         - @board.remarks.problem.each do |keep|
           %li= keep.content
 
-      %form.inline-form
+      %form.inline-form{data: {resource: 'problems', param: 'problem'}}
         .form-item
           %input(type='text')
 
         .form-item
-          %button.js-add-problem Add
+          %button Add
 
   .panel
-    %section.try
+    %section.tri
       %header
         %h2 Try
 
@@ -39,23 +39,56 @@
         - @board.remarks.tri.each do |keep|
           %li= keep.content
 
-      %form.inline-form
+      %form.inline-form{data: {resource: 'tries', param: 'tri'}}
         .form-item
           %input(type='text')
 
         .form-item
-          %button.js-add-try Add
+          %button Add
 
 :javascript
   // TODO: tmp
-  var permalink = "#{params[:permalink]}";
+  const permalink = "#{params[:permalink]}";
+
+  const subscription = App.cable.subscriptions.create(
+    {
+      channel: 'RemarksChannel',
+      permalink: permalink
+    }, {
+    connected: function() {
+      console.log('connected');
+    },
+    disconnected: function() {
+      console.log('disconnected');
+    },
+    received: function(data) {
+      console.log(data);
+      $(`.${data.kind} ul`).append(`<li>${data.content}</li>`);
+    }
+  });
 
   $(function() {
     $('form').on('submit', function(e) {
       e.preventDefault();
 
-      var content = $(e.target).find('input').val();
+      const input  = $(e.target).find('input');
+      const button = $(e.target).find('button');
 
-      $.post(`/api/${permalink}/keeps`, {keep: {content: content}})
-    })
-  })
+      const content  = input.val();
+      const resource = $(e.target).data('resource')
+      const kind     = $(e.target).data('param')
+
+      const params = {};
+      params[kind] = {content: content};
+
+      input.prop('disabled', true);
+      button.prop('disabled', true);
+
+      $.post(`/api/${permalink}/${resource}`, params).then(() => {
+        input.val('');
+
+        input.prop('disabled', false);
+        button.prop('disabled', false);
+      });
+    });
+  });
