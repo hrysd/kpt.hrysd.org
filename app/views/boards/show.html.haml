@@ -1,11 +1,61 @@
 .board
   .panel
     %section.keep
-      %h2 keep
+      %header
+        %h2 keep
+
+      %ul
+        - @board.remarks.keep.each do |keep|
+          %li= keep.content
+
+      %form.inline-form
+        .form-item
+          %input(type='text')
+
+        .form-item
+          %button.js-add-keep Add
 
     %section.problem
-      %h2 Problem
+      %header
+        %h2 Problem
+
+      %ul
+        - @board.remarks.problem.each do |keep|
+          %li= keep.content
+
+      %form.inline-form
+        .form-item
+          %input(type='text')
+
+        .form-item
+          %button.js-add-problem Add
 
   .panel
     %section.try
-      %h2 Try
+      %header
+        %h2 Try
+
+      %ul
+        - @board.remarks.tri.each do |keep|
+          %li= keep.content
+
+      %form.inline-form
+        .form-item
+          %input(type='text')
+
+        .form-item
+          %button.js-add-try Add
+
+:javascript
+  // TODO: tmp
+  var permalink = "#{params[:permalink]}";
+
+  $(function() {
+    $('form').on('submit', function(e) {
+      e.preventDefault();
+
+      var content = $(e.target).find('input').val();
+
+      $.post(`/api/${permalink}/keeps`, {keep: {content: content}})
+    })
+  })
