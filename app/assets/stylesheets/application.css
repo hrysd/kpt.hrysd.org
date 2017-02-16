@@ -1,4 +1,7 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
 body {
+  font-family: 'Noto Sans Japanese', sans-serif;
   margin: 0;
   height: 100vh;
 }
@@ -17,26 +20,42 @@ body {
 .keep, .problem, .tri {
   display: flex;
   flex-direction: column;
+  border:solid 1px #ccc;
+  box-sizing: border-box;
+}
+
+header {
+  padding: 5px;
+}
+
+h1 {
+  margin: 0px;
+}
+
+h2 {
+  margin: 5px 0;
 }
 
 ul {
   flex: 1;
-  overflow: scroll;
+  overflow-y: scroll;
+  list-style-type: none;
+  padding: 0px 20px;
 }
 
-.keep {
-  height: 50%;
-  background: yellow;
+li {
+  word-break: break-all;
+  margin: 5px 0px;
+  padding: 5px;
+  border-bottom: solid 1px #ccc;
 }
 
-.problem {
+.keep, .problem {
   height: 50%;
-  background: red;
 }
 
 .tri {
   height: 100%;
-  background: blue;
 }
 
 .inline-form {
@@ -49,14 +68,20 @@ ul {
   padding: 5px;
 }
 
+.form-button {
+  width: 20%;
+  padding: 5px;
+}
+
 .form-item input {
+  width: 100%;
   padding:5px;
   border:solid 1px #ccc;
   font-size: 1.2em;
   border-radius: 3px;
 }
 
-.form-item  button {
+.form-button button {
   width: 100%;
   font-size: 1.2em;
   padding: 5px;

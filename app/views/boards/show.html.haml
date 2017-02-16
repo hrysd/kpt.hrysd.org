@@ -1,3 +1,6 @@
+%header
+  %h1= @board.title
+
 .board
   .panel
     %section.keep
@@ -12,7 +15,7 @@
         .form-item
           %input(type='text')
 
-        .form-item
+        .form-button
           %button Add
 
     %section.problem
@@ -27,7 +30,7 @@
         .form-item
           %input(type='text')
 
-        .form-item
+        .form-button
           %button Add
 
   .panel
@@ -43,7 +46,7 @@
         .form-item
           %input(type='text')
 
-        .form-item
+        .form-button
           %button Add
 
 :javascript
