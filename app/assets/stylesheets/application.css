@@ -1,15 +1,90 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+body {
+  font-family: 'Noto Sans Japanese', sans-serif;
+  margin: 0;
+  height: 100vh;
+}
+
+.board {
+  display: flex;
+  flex-direction: row;
+  height:100%;
+}
+
+.panel {
+  width: 50%;
+  height: 100%;
+}
+
+.keep, .problem, .tri {
+  display: flex;
+  flex-direction: column;
+  border:solid 1px #ccc;
+  box-sizing: border-box;
+}
+
+header {
+  padding: 5px;
+}
+
+h1 {
+  margin: 0px;
+}
+
+h2 {
+  margin: 5px 0;
+}
+
+ul {
+  flex: 1;
+  overflow-y: scroll;
+  list-style-type: none;
+  padding: 0px 20px;
+}
+
+li {
+  word-break: break-all;
+  margin: 5px 0px;
+  padding: 5px;
+  border-bottom: solid 1px #ccc;
+}
+
+.keep, .problem {
+  height: 50%;
+}
+
+.tri {
+  height: 100%;
+}
+
+.inline-form {
+  display: flex;
+  align-items: center;
+}
+
+.form-item {
+  width: 80%;
+  padding: 5px;
+}
+
+.form-button {
+  width: 20%;
+  padding: 5px;
+}
+
+.form-item input {
+  width: 100%;
+  padding:5px;
+  border:solid 1px #ccc;
+  font-size: 1.2em;
+  border-radius: 3px;
+}
+
+.form-button button {
+  width: 100%;
+  font-size: 1.2em;
+  padding: 5px;
+  border:solid 1px #ccc;
+  border-radius: 3px;
+}

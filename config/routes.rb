@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'boards#new'
+
+  get ':permalink' => 'boards#show', as: :board
+
+  resources :boards, param: :permalink, only: %i(create)
+
+  namespace :api do
+    scope ':permalink', as: :board do
+      resources :keeps,    only: %i(create)
+      resources :problems, only: %i(create)
+      resources :tries,    only: %i(create)
+    end
+  end
 end
