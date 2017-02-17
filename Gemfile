@@ -19,3 +19,7 @@ gem 'uglifier'
 group :development do
   gem 'byebug', group: :test
 end
+
+group :production do
+  gem 'sentry-raven'
+end
