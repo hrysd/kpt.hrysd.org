@@ -108,3 +108,7 @@ li i {
   border:solid 1px #ccc;
   border-radius: 3px;
 }
+
+.error {
+  border: solid 1px red !important;
+}

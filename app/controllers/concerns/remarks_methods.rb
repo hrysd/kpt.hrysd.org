@@ -8,11 +8,15 @@ module RemarksMethods
   def create
     board = find_board
 
-    remark = board.remarks.create!(remark_params.merge(kind: kind))
+    remark = board.remarks.build(remark_params.merge(kind: kind))
 
-    broadcast "#{kind}:created", remark
+    if remark.save
+      broadcast "#{kind}:created", remark
 
-    head :created
+      head :created
+    else
+      head :unprocessable_entity
+    end
   end
 
   def destroy
