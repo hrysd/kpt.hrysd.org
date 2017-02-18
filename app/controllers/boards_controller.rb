@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   def show
-    @board = Board.find_by(permalink: params[:permalink])
+    @board = Board.find_by!(permalink: params[:permalink])
   end
 
   def new
