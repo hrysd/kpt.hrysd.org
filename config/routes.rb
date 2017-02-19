@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     scope ':permalink', as: :board do
-      resources :keeps,    only: %i(create)
-      resources :problems, only: %i(create)
-      resources :tries,    only: %i(create)
+      resources :keeps,    only: %i(create destroy)
+      resources :problems, only: %i(create destroy)
+      resources :tries,    only: %i(create destroy)
     end
   end
 end

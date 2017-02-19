@@ -9,7 +9,7 @@
 
       %ul
         - @board.remarks.keep.each do |keep|
-          %li= keep.content
+          %li{data: {id: keep.id}}= keep.content
 
       %form.inline-form{data: {resource: 'keeps', param: 'keep'}}
         .form-item
@@ -24,7 +24,9 @@
 
       %ul
         - @board.remarks.problem.each do |keep|
-          %li= keep.content
+          %li{data: {id: keep.id}}
+            #{keep.content}
+            %span X
 
       %form.inline-form{data: {resource: 'problems', param: 'problem'}}
         .form-item
@@ -40,7 +42,7 @@
 
       %ul
         - @board.remarks.tri.each do |keep|
-          %li= keep.content
+          %li{data: {id: keep.id}}= keep.content
 
       %form.inline-form{data: {resource: 'tries', param: 'tri'}}
         .form-item
@@ -53,6 +55,16 @@
   // TODO: tmp
   const permalink = "#{params[:permalink]}";
 
+  function appendRemark(kind, content) {
+    $(`.${kind} ul`).append(`<li>${content}</li>`);
+  }
+
+  function removeRemark(kind, id) {
+    $(`.${kind} ul li`).forEach((dom) => {
+      console.log(dom);
+    });
+  }
+
   const subscription = App.cable.subscriptions.create(
     {
       channel: 'RemarksChannel',
@@ -64,9 +76,21 @@
     disconnected: function() {
       console.log('disconnected');
     },
-    received: function(data) {
-      console.log(data);
-      $(`.${data.kind} ul`).append(`<li>${data.content}</li>`);
+    received: function({event_name, data}) {
+      console.log(event_name, data);
+
+      switch(event_name) {
+        case: 'keep:created':
+        case: 'problem:created':
+        case: 'tri:created':
+          appendRemark(data.kind, data.content);
+          break;
+        case: 'keep:deleted':
+        case: 'problem:deleted':
+        case: 'tri:deleted':
+          removeRemark(data.kind, data.id);
+          break;
+      }
     }
   });
 
