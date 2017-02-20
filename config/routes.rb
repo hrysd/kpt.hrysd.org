@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       resources :tries,    only: %i(create)
     end
   end
+
+  get '.well-known/acme-challenge/:id' => 'letsencrypt#show'
 end
