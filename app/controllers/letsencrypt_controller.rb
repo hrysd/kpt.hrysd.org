@@ -1,4 +1,6 @@
 class LetsencryptController < ApplicationController
+  force_ssl except: %i(show)
+
   def show
     unless params[:id] == request_key
       head :not_found
