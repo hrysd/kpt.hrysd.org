@@ -21,7 +21,7 @@ module RemarksMethods
 
     remark.destroy!
 
-    broadcast "#{kind}:deleted", id: remark.id
+    broadcast "#{kind}:deleted", id: remark.id, kind: remark.kind
 
     head :no_content
   end

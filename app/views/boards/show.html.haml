@@ -9,7 +9,9 @@
 
       %ul
         - @board.remarks.keep.each do |keep|
-          %li{data: {id: keep.id}}= keep.content
+          %li{data: {id: keep.id}}
+            %p= keep.content
+            %i.fa.fa-times
 
       %form.inline-form{data: {resource: 'keeps', param: 'keep'}}
         .form-item
@@ -25,8 +27,8 @@
       %ul
         - @board.remarks.problem.each do |keep|
           %li{data: {id: keep.id}}
-            #{keep.content}
-            %span X
+            %p= keep.content
+            %i.fa.fa-times
 
       %form.inline-form{data: {resource: 'problems', param: 'problem'}}
         .form-item
@@ -42,7 +44,9 @@
 
       %ul
         - @board.remarks.tri.each do |keep|
-          %li{data: {id: keep.id}}= keep.content
+          %li{data: {id: keep.id}}
+            %p= keep.content
+            %i.fa.fa-times
 
       %form.inline-form{data: {resource: 'tries', param: 'tri'}}
         .form-item
@@ -55,13 +59,15 @@
   // TODO: tmp
   const permalink = "#{params[:permalink]}";
 
-  function appendRemark(kind, content) {
-    $(`.${kind} ul`).append(`<li>${content}</li>`);
+  function appendRemark(kind, id, content) {
+    $(`.${kind} ul`).append(`<li data-id=${id}><p>${content}</p><i class='fa fa-times'></i></li>`);
   }
 
   function removeRemark(kind, id) {
-    $(`.${kind} ul li`).forEach((dom) => {
-      console.log(dom);
+    $(`.${kind} ul li`).each((_, li) => {
+      if (Number($(li).data('id')) === id) {
+        $(li).remove();
+      }
     });
   }
 
@@ -77,17 +83,15 @@
       console.log('disconnected');
     },
     received: function({event_name, data}) {
-      console.log(event_name, data);
-
       switch(event_name) {
-        case: 'keep:created':
-        case: 'problem:created':
-        case: 'tri:created':
-          appendRemark(data.kind, data.content);
+        case 'keep:created':
+        case 'problem:created':
+        case 'tri:created':
+          appendRemark(data.kind, data.id, data.content);
           break;
-        case: 'keep:deleted':
-        case: 'problem:deleted':
-        case: 'tri:deleted':
+        case 'keep:deleted':
+        case 'problem:deleted':
+        case 'tri:deleted':
           removeRemark(data.kind, data.id);
           break;
       }
@@ -117,5 +121,19 @@
         input.prop('disabled', false);
         button.prop('disabled', false);
       });
+    });
+
+    $(document).on('click', '.fa.fa-times', function(e) {
+      const confirmation = window.confirm('Are you sure you want to delete this?');
+
+      if (!confirmation) return;
+
+      const li = $(e.target).parent();
+      const id = li.data('id');
+
+      // FIXME: li -> ul -> form
+      const resource = li.parent().siblings('form').data('resource');
+
+      $.ajax({type: 'DELETE', url: `/api/${permalink}/${resource}/${id}`});
     });
   });

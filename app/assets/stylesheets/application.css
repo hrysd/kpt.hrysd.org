@@ -1,3 +1,7 @@
+/*
+ *= require font-awesome
+ */
+
 @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 body {
@@ -49,10 +53,21 @@ ul {
 }
 
 li {
+  display: flex;
+  align-items: center;
   word-break: break-all;
   margin: 5px 0px;
   padding: 5px;
   border-bottom: solid 1px #ccc;
+}
+
+li p {
+  margin: 0px;
+  flex: 2;
+}
+
+li i {
+  margin-left: 5px;
 }
 
 .keep, .problem {

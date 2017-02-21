@@ -46,6 +46,8 @@ GEM
     execjs (2.7.0)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hamlit (2.7.5)
@@ -137,6 +139,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  font-awesome-rails
   hamlit
   jquery-rails
   pg
