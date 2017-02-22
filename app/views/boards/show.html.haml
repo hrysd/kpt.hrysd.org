@@ -117,6 +117,13 @@
 
       $.post(`/api/${permalink}/${resource}`, params).then(() => {
         input.val('');
+        input.removeClass('error');
+
+        input.prop('disabled', false);
+        button.prop('disabled', false);
+      }, () => {
+        input.val('');
+        input.addClass('error');
 
         input.prop('disabled', false);
         button.prop('disabled', false);
