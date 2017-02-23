@@ -3,8 +3,8 @@ require 'securerandom'
 class Board < ApplicationRecord
   has_many :remarks
 
-  validates :title,     presence: true
-  validates :permalink, presence: true
+  validates :title,     presence: true, length: {maximum: 255}
+  validates :permalink, presence: true, length: {maximum: 255}
 
   before_validation :set_permalink
 
