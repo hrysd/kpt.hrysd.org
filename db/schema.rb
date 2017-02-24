@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208075202) do
+ActiveRecord::Schema.define(version: 20170222034626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20170208075202) do
     t.index ["permalink"], name: "index_boards_on_permalink", unique: true, using: :btree
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.integer  "remark_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["remark_id"], name: "index_reactions_on_remark_id", using: :btree
+  end
+
   create_table "remarks", force: :cascade do |t|
     t.integer  "kind",       null: false
     t.string   "content",    null: false
@@ -32,5 +39,6 @@ ActiveRecord::Schema.define(version: 20170208075202) do
     t.index ["board_id"], name: "index_remarks_on_board_id", using: :btree
   end
 
+  add_foreign_key "reactions", "remarks"
   add_foreign_key "remarks", "boards"
 end

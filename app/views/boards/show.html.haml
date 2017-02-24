@@ -11,7 +11,14 @@
         - @board.remarks.keep.each do |keep|
           %li{data: {id: keep.id}}
             %p= keep.content
-            %i.fa.fa-times
+
+            -# TODO: <button> にしたい
+            %span.thumbs-up
+              %i.fa.fa-thumbs-o-up
+              = keep.reactions.count
+
+            %span.remove-button
+              %i.fa.fa-times
 
       %form.inline-form{data: {resource: 'keeps', param: 'keep'}}
         .form-item
@@ -27,8 +34,12 @@
       %ul
         - @board.remarks.problem.each do |keep|
           %li{data: {id: keep.id}}
-            %p= keep.content
-            %i.fa.fa-times
+            %span.thumbs-up
+              %i.fa.fa-thumbs-o-up
+              = keep.reactions.count
+
+            %span.remove-button
+              %i.fa.fa-times
 
       %form.inline-form{data: {resource: 'problems', param: 'problem'}}
         .form-item
@@ -46,7 +57,13 @@
         - @board.remarks.tri.each do |keep|
           %li{data: {id: keep.id}}
             %p= keep.content
-            %i.fa.fa-times
+
+            %span.thumbs-up
+              %i.fa.fa-thumbs-o-up
+              = keep.reactions.count
+
+            %span.remove-button
+              %i.fa.fa-times
 
       %form.inline-form{data: {resource: 'tries', param: 'tri'}}
         .form-item
@@ -59,14 +76,24 @@
   // TODO: tmp
   const permalink = "#{params[:permalink]}";
 
-  function appendRemark(kind, id, content) {
-    $(`.${kind} ul`).append(`<li data-id=${id}><p>${content}</p><i class='fa fa-times'></i></li>`);
+  function appendRemark(kind, id, content, count) {
+    $(`.${kind} ul`).append(`
+      <li data-id=${id}><p>${content}</p><span class='thumbs-up'><i class='fa fa-thumbs-o-up'></i>${count}</span><span><i class='fa fa-times'></i></span></li>
+    `);
   }
 
   function removeRemark(kind, id) {
     $(`.${kind} ul li`).each((_, li) => {
       if (Number($(li).data('id')) === id) {
         $(li).remove();
+      }
+    });
+  }
+
+  function reaction(kind, id, count) {
+    $(`.${kind} ul li`).each((_, li) => {
+      if (Number($(li).data('id')) === id) {
+        $(li).find('span.thumbs-up').html(`<i class='fa fa-thumbs-o-up'></i>${count}`);
       }
     });
   }
@@ -87,12 +114,17 @@
         case 'keep:created':
         case 'problem:created':
         case 'tri:created':
-          appendRemark(data.kind, data.id, data.content);
+          appendRemark(data.kind, data.id, data.content, data.reactions_count);
           break;
         case 'keep:deleted':
         case 'problem:deleted':
         case 'tri:deleted':
           removeRemark(data.kind, data.id);
+          break;
+        case 'keep:reacted':
+        case 'problem:reacted':
+        case 'tri:reacted':
+          reaction(data.kind, data.id, data.reactions_count);
           break;
       }
     }
@@ -135,12 +167,20 @@
 
       if (!confirmation) return;
 
-      const li = $(e.target).parent();
+      const li = $(e.target).parent().parent();
       const id = li.data('id');
 
       // FIXME: li -> ul -> form
       const resource = li.parent().siblings('form').data('resource');
 
       $.ajax({type: 'DELETE', url: `/api/${permalink}/${resource}/${id}`});
+    });
+
+
+    $(document).on('click', '.fa.fa-thumbs-o-up', function(e) {
+      const li = $(e.target).parent().parent();
+      const id = li.data('id');
+
+      $.post(`/api/${permalink}/remarks/${id}/reactions`);
     });
   });

@@ -66,8 +66,13 @@ li p {
   flex: 2;
 }
 
-li i {
+li span {
   margin-left: 5px;
+}
+
+li span.thumbs-up {
+  padding-right: 5px;
+  border-right: 1px solid #ccc;
 }
 
 .keep, .problem {
