@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       resources :keeps,    only: %i(create destroy)
       resources :problems, only: %i(create destroy)
       resources :tries,    only: %i(create destroy)
+
+      resources :remarks, only: %i() do
+        resources :reactions, only: %i(create)
+      end
     end
   end
 

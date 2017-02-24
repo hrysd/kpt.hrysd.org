@@ -11,7 +11,7 @@ module RemarksMethods
     remark = board.remarks.build(remark_params.merge(kind: kind))
 
     if remark.save
-      broadcast "#{kind}:created", remark
+      broadcast "#{kind}:created", remark.as_json(methods: :reactions_count)
 
       head :created
     else
@@ -23,6 +23,7 @@ module RemarksMethods
     board  = find_board
     remark = find_remark(board)
 
+    remark.reactions.destroy_all
     remark.destroy!
 
     broadcast "#{kind}:deleted", id: remark.id, kind: remark.kind
