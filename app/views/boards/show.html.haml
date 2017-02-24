@@ -34,6 +34,8 @@
       %ul
         - @board.remarks.problem.each do |keep|
           %li{data: {id: keep.id}}
+            %p= keep.content
+
             %span.thumbs-up
               %i.fa.fa-thumbs-o-up
               = keep.reactions.count
