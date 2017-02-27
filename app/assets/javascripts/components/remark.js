@@ -3,15 +3,27 @@ Vue.component('remark', {
     <li>
       <p>{{remark.content}}</p>
 
-      <span class='thumbs-up'>
+      <button class='thumbs-up' v-on:click='onThumbsUp'>
         <i class='fa fa-thumbs-o-up'></i>
         {{remark.reactions_count}}
-      </span>
+      </button>
 
-      <span class='remove-button'>
+      <button class='remove-button' v-on:click='onRemove'>
         <i class='fa fa-times'></i>
-      </span>
+      </button>
     </li>
   `,
-  props: ['remark']
+  props: ['remark'],
+  methods: {
+    onThumbsUp: function() {
+      console.log(`Make ${this.remark.id} +1`);
+    },
+    onRemove: function() {
+      const confirmation = window.confirm('Are you sure you want to delete this?');
+
+      if (!confirmation) return;
+
+      console.log(`remove this ${this.remark.id}`);
+    }
+  }
 });
