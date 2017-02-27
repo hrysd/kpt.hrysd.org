@@ -73,6 +73,7 @@ li span {
 button.thumbs-up {
   margin-right: 10px;
 }
+
 button.thumbs-up, button.remove-button {
   background-color: white;
   font-size: 1rem;
@@ -96,32 +97,42 @@ button.thumbs-up:active, button.remove-button:active{
 .inline-form {
   display: flex;
   align-items: center;
+  padding: 5px;
 }
 
 .form-item {
   width: 80%;
-  padding: 5px;
 }
 
 .form-button {
   width: 20%;
-  padding: 5px;
+  text-align: center;
+  margin-left: 10px;
 }
 
-.form-item input {
+input {
+  margin: 5px;
+  padding: 5px;
   width: 100%;
-  padding:5px;
   border:solid 1px #ccc;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   border-radius: 3px;
+  outline: none;
 }
 
-.form-button button {
-  width: 100%;
-  font-size: 1.2em;
+.submit-button {
+  margin: 5px;
   padding: 5px;
-  border:solid 1px #ccc;
-  border-radius: 3px;
+  width: 20%;
+  background-color: white;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.submit-button:active {
+  box-shadow: inset 0 3px 5px #ccc;
 }
 
 .error {

@@ -1,13 +1,26 @@
 Vue.component('remark-form', {
   template: `
-    <form class='inline-form'>
-      <div class='form-item'>
-        <input type='text'>
-      </div>
+    <form class='inline-form' v-on:submit.prevent='onSubmit'>
+      <input type='text' v-model='newRemark.title' :disabled='submitting'>
 
-      <div class='form-button'>
-        <button>Add</button>
-      </div>
+      <button class='submit-button' :disabled='submitting'>Add</button>
     </form>
   `,
+  data: () => {
+    return {
+      submitting: false,
+      newRemark: {
+        title: ''
+      },
+    }
+  },
+  methods: {
+    onSubmit: function() {
+      this.submitting = true;
+
+      setTimeout(() => {
+        this.submitting = false;
+      }, 5000)
+    }
+  }
 });
