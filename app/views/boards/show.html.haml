@@ -1,23 +1,4 @@
 %header
   %h1= @board.title
 
-.board
-  .panel
-    %remarks{kind: 'keep',    ':remarks' => 'keeps'}
-    %remarks{kind: 'problem', ':remarks' => 'problems'}
-
-  .panel
-    %remarks{kind: 'tri',     ':remarks' => 'tries'}
-
-:javascript
-  new Vue ({
-    el:'.board',
-    data: () => {
-      return {
-        permalink: "#{@board.permalink}",
-        keeps:     #{@board.remarks.keep.to_json(methods: :reactions_count)},
-        problems:  #{@board.remarks.problem.to_json(methods: :reactions_count)},
-        tries:     #{@board.remarks.tri.to_json(methods: :reactions_count)}
-      }
-    }
-  });
+#board

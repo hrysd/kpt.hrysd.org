@@ -1,0 +1,34 @@
+{
+  "name": "kpt",
+  "version": "1.0.0",
+  "description": "kpt.hrysd.org",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack -w --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrysd/kpt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrysd/kpt/issues"
+  },
+  "homepage": "https://github.com/hrysd/kpt#readme",
+  "devDependencies": {
+    "babel-core": "6.23.1",
+    "babel-loader": "6.3.2",
+    "babel-plugin-transform-object-rest-spread": "6.23.0",
+    "css-loader": "0.26.2",
+    "vue-loader": "11.1.3",
+    "vue-template-compiler": "2.2.1",
+    "webpack": "2.2.1"
+  },
+  "dependencies": {
+    "vue": "2.2.1"
+  }
+}

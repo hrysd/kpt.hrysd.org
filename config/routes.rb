@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :boards, param: :permalink, only: %i(create)
 
   namespace :api do
+    get ':permalink' => 'boards#show', as: :board
+
     scope ':permalink', as: :board do
       resources :keeps,    only: %i(create destroy)
       resources :problems, only: %i(create destroy)
