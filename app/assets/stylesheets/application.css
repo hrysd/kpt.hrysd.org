@@ -56,9 +56,12 @@ li {
   display: flex;
   align-items: center;
   word-break: break-all;
-  margin: 5px 0px;
-  padding: 5px;
+  padding: 10px 5px;
   border-bottom: solid 1px #ccc;
+}
+
+li:nth-child(even) {
+  background-color: #ececec;
 }
 
 li p {
