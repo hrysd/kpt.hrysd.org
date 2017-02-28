@@ -11,16 +11,8 @@ window.addEventListener('load', () => {
 });
 
 function mount(el, data) {
-  new Vue({
-    el: el,
-    data() {
-      return {
-        ...data
-      }
-    },
-    render: (h) => { h(Board) }
-  });
-};
+  new Vue(Object.assign({data() {return data}}, Board)).$mount(el);
+}
 
 function fetchInitialState(permalink) {
   return fetch(`/api/${permalink}`).then((response) => {
