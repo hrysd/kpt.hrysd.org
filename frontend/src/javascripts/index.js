@@ -1,21 +1,19 @@
-const Vue = require('vue').default;
+const Vue  = require('vue').default;
+const Vuex = require('vuex').default;
 
+const {fetchInitialState} = require('./store');
 const Board = require('./components/board');
+
+Vue.use(Vuex);
 
 window.addEventListener('load', () => {
   const permalink = new URL(location).pathname.replace('/', '');
 
-  fetchInitialState(permalink).then((data) => {
-    mount('#board', data)
+  fetchInitialState(permalink).then((store) => {
+    mount('#board', store)
   });
 });
 
-function mount(el, data) {
-  new Vue(Object.assign({data() {return data}}, Board)).$mount(el);
-}
-
-function fetchInitialState(permalink) {
-  return fetch(`/api/${permalink}`).then((response) => {
-    return response.json();
-  });
+function mount(el, store) {
+  new Vue(Object.assign({store,}, Board)).$mount(el);
 }

@@ -7,7 +7,10 @@
 </template>
 
 <script>
+const {mapActions} = require('vuex');
+
 module.exports = {
+  props: ['resource'],
   data() {
     return {
       submitting: false,
@@ -17,12 +20,14 @@ module.exports = {
     }
   },
   methods: {
+    ...mapActions(['addRemark']),
     onSubmit() {
       this.submitting = true;
 
-      setTimeout(() => {
+      this.addRemark({resource: this.resource, content: this.newRemark.title}).then(() => {
+        this.newRemark.title = '';
         this.submitting = false;
-      }, 5000)
+      });
     }
   }
 }

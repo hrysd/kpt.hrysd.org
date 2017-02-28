@@ -1,12 +1,12 @@
 <template>
   <div class='board'>
     <div class='panel'>
-      <remarks resource='keeps'    kind='keep'    :remarks='keeps' />
-      <remarks resource='problems' kind='problem' :remarks='problems' />
+      <remarks resource='keeps'    kind='keep'    />
+      <remarks resource='problems' kind='problem' />
     </div>
 
     <div class='panel'>
-      <remarks resource='tries' kind='try' :remarks='tries' />
+      <remarks resource='tries' kind='try' />
     </div>
   </div>
 </template>

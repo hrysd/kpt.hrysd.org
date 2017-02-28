@@ -42,7 +42,14 @@ module RemarksMethods
   end
 
   def remark_params
-    params.require(kind).permit(:content)
+    converted =
+      case kind
+      when :tri then :try
+      else
+        kind
+      end
+
+    params.require(converted).permit(:content)
   end
 
   def broadcast(event_name, data)

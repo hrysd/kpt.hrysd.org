@@ -8,20 +8,27 @@
       <remark v-for='(remark, index) in remarks' :remark='remark'></remark>
     </ul>
 
-    <remark-form />
+    <remark-form :resource='resource'/>
   </section>
 </template>
 
 <script>
+const {mapState} = require('vuex');
+
 const Remark     = require('./remark');
 const RemarkForm = require('./remark-form');
 
 module.exports = {
-  props: ['kind', 'remarks', 'resource'],
+  props: ['kind', 'resource'],
   components: {
     remark: Remark,
     'remark-form': RemarkForm
   },
+  computed: mapState({
+    remarks(state) {
+      return state[this.resource];
+    }
+  }),
   filters: {
     capitalize(value) {
       if (!value) return ''
