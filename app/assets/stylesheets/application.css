@@ -26,7 +26,7 @@ body {
   height: 100%;
 }
 
-.keep, .problem, .tri {
+.keep, .problem, .try {
   display: flex;
   flex-direction: column;
   border:solid 1px #ccc;
@@ -93,7 +93,7 @@ button.thumbs-up:active, button.remove-button:active{
   height: 50%;
 }
 
-.tri {
+.try {
   height: 100%;
 }
 
