@@ -6,7 +6,7 @@ module Api
 
       remark.reactions.create!
 
-      broadcast "#{remark.kind}:reacted", remark.as_json(methods: :reactions_count)
+      broadcast "#{remark.kind}:reacted", RemarkSerializer.new(remark).to_json
 
       head :created
     end
