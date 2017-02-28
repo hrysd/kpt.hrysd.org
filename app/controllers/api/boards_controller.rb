@@ -3,7 +3,7 @@ module Api
     def show
       board = Board.find_by!(permalink: params[:permalink])
 
-      render json: board.as_json(methods: %i(keeps problems tries))
+      render json: board, serializer: BoardSerializer
     end
   end
 end
