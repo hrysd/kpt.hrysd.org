@@ -1,7 +1,7 @@
 <template>
   <section :class='kind'>
     <header>
-      <h2>{{kind}} TODO: Capitalize</h2>
+      <h2>{{kind | capitalize}}</h2>
     </header>
 
     <ul>
@@ -17,10 +17,18 @@ const Remark     = require('./remark');
 const RemarkForm = require('./remark-form');
 
 module.exports = {
-  props: ['kind', 'remarks'],
+  props: ['kind', 'remarks', 'resource'],
   components: {
     remark: Remark,
     'remark-form': RemarkForm
+  },
+  filters: {
+    capitalize(value) {
+      if (!value) return ''
+
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
   }
 }
 </script>
