@@ -7,6 +7,7 @@ end
 
 gem 'rails', '5.0.1'
 
+gem 'active_model_serializers'
 gem 'font-awesome-rails'
 gem 'hamlit'
 gem 'jquery-rails'
