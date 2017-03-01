@@ -30,6 +30,8 @@ function createWebsocketPlugin(url, permalink) {
             case 'tri:reacted':
               store.commit('THUMBS_UP', {resource: pluralize(data.kind), remark: data});
               break;
+            case 'board:closed':
+              store.commit('CLOSE_BOARD');
           }
         }
       }

@@ -32,6 +32,7 @@ function fetchInitialState(permalink) {
 const ADD_REMARK    = 'ADD_REMARK';
 const REMOVE_REMARK = 'REMOVE_REMARK';
 const THUMBS_UP     = 'THUMBS_UP';
+const CLOSE_BOARD   = 'CLOSE_BOARD';
 
 const mutations = {
   [ADD_REMARK] (state, {resource, remark}) {
@@ -52,6 +53,9 @@ const mutations = {
     if (index === -1) { return; }
 
     state[resource].splice(index, 1, remark);
+  },
+  [CLOSE_BOARD] (state) {
+    state.state = 'closed';
   }
 };
 
@@ -64,6 +68,9 @@ const actions = {
   },
   removeRemark({state}, {resource, remarkId}) {
     Client.removeRemark(state.permalink, resource, remarkId)
+  },
+  closeBoard({state}) {
+    Client.closeBoard(state.permalink)
   }
 };
 

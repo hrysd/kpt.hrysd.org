@@ -11,5 +11,5 @@ class BoardSerializer < ActiveModel::Serializer
     object.remarks.tri
   end
 
-  attributes :id, :title, :permalink
+  attributes :id, :title, :permalink, :state
 end

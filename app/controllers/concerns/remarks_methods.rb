@@ -1,6 +1,8 @@
 module RemarksMethods
   extend ActiveSupport::Concern
 
+  include BoardFindMethod
+
   included do
     class_attribute :kind
   end
@@ -32,10 +34,6 @@ module RemarksMethods
   end
 
   private
-
-  def find_board
-    Board.find_by!(permalink: params[:permalink])
-  end
 
   def find_remark(board)
     board.remarks.find(params[:id])

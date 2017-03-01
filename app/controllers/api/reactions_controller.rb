@@ -1,5 +1,7 @@
 module Api
   class ReactionsController < ActionController::API
+    include BoardFindMethod
+
     def create
       board  = find_board
       remark = find_remark(board)
@@ -12,10 +14,6 @@ module Api
     end
 
     private
-
-    def find_board
-      Board.find_by!(permalink: params[:permalink])
-    end
 
     def find_remark(board)
       board.remarks.find(params[:remark_id])
