@@ -16,7 +16,6 @@ gem 'puma'
 gem 'redis'
 gem 'sass-rails'
 gem 'turbolinks'
-gem 'uglifier'
 
 group :development do
   gem 'byebug', group: :test
