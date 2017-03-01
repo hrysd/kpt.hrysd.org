@@ -1,7 +1,7 @@
 class Remark < ApplicationRecord
   belongs_to :board
 
-  has_many :reactions
+  has_many :reactions, dependent: :destroy
 
   validates :kind,    presence: true
   validates :content, presence: true, length: {maximum: 255}

@@ -1,7 +1,7 @@
 require 'securerandom'
 
 class Board < ApplicationRecord
-  has_many :remarks
+  has_many :remarks, dependent: :destroy
   has_many :keeps,    -> { keep },    class_name: 'Remark'
   has_many :problems, -> { problem }, class_name: 'Remark'
   has_many :tris,     -> { tri },     class_name: 'Remark'
