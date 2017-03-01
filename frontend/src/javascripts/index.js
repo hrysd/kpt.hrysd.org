@@ -1,0 +1,19 @@
+const Vue  = require('vue').default;
+const Vuex = require('vuex').default;
+
+const {fetchInitialState} = require('./store');
+const Board = require('./components/board');
+
+Vue.use(Vuex);
+
+window.addEventListener('load', () => {
+  const permalink = new URL(location).pathname.replace('/', '');
+
+  fetchInitialState(permalink).then((store) => {
+    mount('#board', store)
+  });
+});
+
+function mount(el, store) {
+  new Vue(Object.assign({store,}, Board)).$mount(el);
+}

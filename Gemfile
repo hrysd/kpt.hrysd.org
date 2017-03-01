@@ -7,6 +7,7 @@ end
 
 gem 'rails', '5.0.1'
 
+gem 'active_model_serializers'
 gem 'font-awesome-rails'
 gem 'hamlit'
 gem 'jquery-rails'
@@ -15,7 +16,6 @@ gem 'puma'
 gem 'redis'
 gem 'sass-rails'
 gem 'turbolinks'
-gem 'uglifier'
 
 group :development do
   gem 'byebug', group: :test

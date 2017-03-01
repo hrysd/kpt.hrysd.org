@@ -11,7 +11,7 @@ module RemarksMethods
     remark = board.remarks.build(remark_params.merge(kind: kind))
 
     if remark.save
-      broadcast "#{kind}:created", remark.as_json(methods: :reactions_count)
+      broadcast "#{kind}:created", RemarkSerializer.new(remark).as_json
 
       head :created
     else
