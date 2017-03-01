@@ -15,6 +15,11 @@ const Client = {
     const endpoint = `/api/${permalink}/${resource}/${remarkId}`;
 
     return axios.delete(endpoint);
+  },
+  closeBoard(permalink) {
+    const endpoint = `/api/${permalink}/state`;
+
+    return axios.put(endpoint);
   }
 }
 

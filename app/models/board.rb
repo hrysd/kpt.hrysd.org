@@ -6,6 +6,8 @@ class Board < ApplicationRecord
   has_many :problems, -> { problem }, class_name: 'Remark'
   has_many :tris,     -> { tri },     class_name: 'Remark'
 
+  enum state: {opened: 0, closed: 1}
+
   validates :title,     presence: true, length: {maximum: 255}
   validates :permalink, presence: true, length: {maximum: 255}
 

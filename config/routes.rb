@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get ':permalink' => 'boards#show', as: :board
 
     scope ':permalink', as: :board do
+      resource :state, only: %i(update)
+
       resources :keeps,    only: %i(create destroy)
       resources :problems, only: %i(create destroy)
       resources :tris,     only: %i(create destroy)
