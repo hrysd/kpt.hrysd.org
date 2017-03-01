@@ -7,6 +7,10 @@ const Board = require('./components/board');
 Vue.use(Vuex);
 
 window.addEventListener('load', () => {
+  const isBoard = document.getElementById('board');
+
+  if (!isBoard) { return; }
+
   const permalink = new URL(location).pathname.replace('/', '');
 
   fetchInitialState(permalink).then((store) => {
