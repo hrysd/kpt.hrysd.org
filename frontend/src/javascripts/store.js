@@ -21,7 +21,7 @@ function fetchInitialState(permalink) {
               state: Object.assign(initialState, data),
               mutations,
               actions,
-              plugins: [createWebsocketPlugin('ws://localhost:3000/cable', permalink)]
+              plugins: [createWebsocketPlugin('/cable', permalink)]
             }
           )
         );
