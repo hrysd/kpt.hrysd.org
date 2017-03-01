@@ -1,6 +1,7 @@
 {
   "name": "kpt",
   "scripts": {
+    "postdeploy": "bundle exec bin/setup"
   },
   "env": {
     "LANG": {
