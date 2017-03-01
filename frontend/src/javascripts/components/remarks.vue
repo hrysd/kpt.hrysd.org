@@ -5,7 +5,7 @@
     </header>
 
     <ul>
-      <remark v-for='(remark, index) in remarks' :remark='remark'></remark>
+      <remark v-for='(remark, index) in remarks' :remark='remark' :resource='resource'></remark>
     </ul>
 
     <remark-form :resource='resource'/>

@@ -2,7 +2,7 @@
   <li>
     <p>{{remark.content}}</p>
 
-    <button class='thumbs-up' v-on:click='onThumbsUp'>
+    <button class='thumbs-up' v-on:click='thumbsUp(remark.id)'>
       <i class='fa fa-thumbs-o-up'></i>
       {{remark.reactions_count}}
     </button>
@@ -14,18 +14,18 @@
 </template>
 
 <script>
+const {mapActions} = require('vuex');
+
 module.exports = {
-  props: ['remark'],
+  props: ['remark', 'resource'],
   methods: {
-    onThumbsUp() {
-      console.log(`Make ${this.remark.id} +1`);
-    },
+    ...mapActions(['thumbsUp', 'removeRemark']),
     onRemove() {
       const confirmation = window.confirm('Are you sure you want to delete this?');
 
       if (!confirmation) return;
 
-      console.log(`remove this ${this.remark.id}`);
+      this.removeRemark({resource: this.resource, remarkId: this.remark.id});
     }
   }
 };

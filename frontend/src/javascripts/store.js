@@ -29,10 +29,15 @@ const mutations = {
 
 const actions = {
   addRemark({commit, state}, {resource, content}) {
-    console.log(resource, content)
     Client.createRemark(state.permalink, resource, content).then(() => {
       commit(ADD_REMARK, {resource, remark: {content: content}});
     });
+  },
+  thumbsUp({state}, remarkId) {
+    Client.createReaction(state.permalink, remarkId)
+  },
+  removeRemark({state}, {resource, remarkId}) {
+    Client.removeRemark(state.permalink, resource, remarkId)
   }
 };
 
