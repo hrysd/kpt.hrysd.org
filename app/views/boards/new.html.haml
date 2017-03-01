@@ -1,13 +1,24 @@
-%h1 KPT を始める
+.content
+  %header
+    %h1 kpt.hrysd.org
 
-= form_for @board do |f|
-  .form-item
-    = f.label :title
-    = f.text_field :title
+  .new-kpt-form
+    %h2 KPT を始める
 
-  .form-item
-    = f.label :permalink
-    = f.text_field :permalink
+    = form_for @board do |f|
+      .form-item
+        = f.label :title, 'タイトル*'
+        = f.text_field :title
 
-  .form-item
-    = f.submit
+      .form-item
+        = f.label :permalink, 'パーマリンク'
+        = f.text_field :permalink
+
+      .form-item
+        = f.submit 'KPT を始める'
+
+  %footer
+    %p
+      ©︎
+      %a(href='https://twitter.com/hrysd') @hrysd
+      All rights reserved.
