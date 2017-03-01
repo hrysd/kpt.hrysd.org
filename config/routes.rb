@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     scope ':permalink', as: :board do
       resources :keeps,    only: %i(create destroy)
       resources :problems, only: %i(create destroy)
-      resources :tries,    only: %i(create destroy)
+      resources :tris,     only: %i(create destroy)
 
       resources :remarks, only: %i() do
         resources :reactions, only: %i(create)

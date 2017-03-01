@@ -7,7 +7,7 @@ class BoardSerializer < ActiveModel::Serializer
     object.remarks.problem
   end
 
-  has_many :tries do
+  has_many :tris do
     object.remarks.tri
   end
 

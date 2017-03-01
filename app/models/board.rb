@@ -4,7 +4,7 @@ class Board < ApplicationRecord
   has_many :remarks
   has_many :keeps,    -> { keep },    class_name: 'Remark'
   has_many :problems, -> { problem }, class_name: 'Remark'
-  has_many :tries,    -> { tri },     class_name: 'Remark'
+  has_many :tris,     -> { tri },     class_name: 'Remark'
 
   validates :title,     presence: true, length: {maximum: 255}
   validates :permalink, presence: true, length: {maximum: 255}

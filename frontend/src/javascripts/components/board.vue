@@ -6,7 +6,7 @@
     </div>
 
     <div class='panel'>
-      <remarks resource='tries' kind='try' />
+      <remarks resource='tris' kind='try' />
     </div>
   </div>
 </template>

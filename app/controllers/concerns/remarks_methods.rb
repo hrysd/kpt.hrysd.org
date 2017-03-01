@@ -11,7 +11,7 @@ module RemarksMethods
     remark = board.remarks.build(remark_params.merge(kind: kind))
 
     if remark.save
-      broadcast "#{kind}:created", RemarkSerializer.new(remark).to_json
+      broadcast "#{kind}:created", RemarkSerializer.new(remark).as_json
 
       head :created
     else
@@ -42,14 +42,7 @@ module RemarksMethods
   end
 
   def remark_params
-    converted =
-      case kind
-      when :tri then :try
-      else
-        kind
-      end
-
-    params.require(converted).permit(:content)
+    params.require(kind).permit(:content)
   end
 
   def broadcast(event_name, data)

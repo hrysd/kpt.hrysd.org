@@ -1,5 +1,5 @@
 module Api
-  class TriesController < ActionController::API
+  class TrisController < ActionController::API
     include RemarksMethods
 
     self.kind = :tri
