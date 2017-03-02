@@ -14,7 +14,6 @@ gem 'pg'
 gem 'puma'
 gem 'redis'
 gem 'sass-rails'
-gem 'turbolinks'
 
 group :development do
   gem 'byebug', group: :test
