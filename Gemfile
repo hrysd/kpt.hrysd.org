@@ -10,12 +10,10 @@ gem 'rails', '5.0.1'
 gem 'active_model_serializers'
 gem 'font-awesome-rails'
 gem 'hamlit'
-gem 'jquery-rails'
 gem 'pg'
 gem 'puma'
 gem 'redis'
 gem 'sass-rails'
-gem 'turbolinks'
 
 group :development do
   gem 'byebug', group: :test
