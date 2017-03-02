@@ -7,7 +7,9 @@
 
     = form_for @board do |f|
       .form-item
-        = f.label :title, 'タイトル*'
+        = f.label :title do
+          タイトル
+          %span(style='color: #E25926') *
         = f.text_field :title
 
       .form-item
