@@ -1,13 +1,15 @@
 const {Store} = require('vuex').default;
-const Client = require('./client');
+
+const actions   = require('./actions');
+const mutations = require('./mutations');
 const createWebsocketPlugin = require('./websocket-plugin');
 
 const initialState = {
   title:     '',
   permalink: '',
-  keeps:    [],
-  problems: [],
-  tris:    []
+  keeps:     [],
+  problems:  [],
+  tris:      []
 };
 
 function fetchInitialState(permalink) {
@@ -28,50 +30,5 @@ function fetchInitialState(permalink) {
     });
   });
 }
-
-const ADD_REMARK    = 'ADD_REMARK';
-const REMOVE_REMARK = 'REMOVE_REMARK';
-const THUMBS_UP     = 'THUMBS_UP';
-const CLOSE_BOARD   = 'CLOSE_BOARD';
-
-const mutations = {
-  [ADD_REMARK] (state, {resource, remark}) {
-    state[resource].push(remark);
-  },
-  [REMOVE_REMARK] (state, {resource, remarkId}) {
-    const index = state[resource].findIndex((r) => {
-      return r.id === remarkId;
-    });
-
-    state[resource].splice(index, 1);
-  },
-  [THUMBS_UP] (state, {resource, remark}) {
-    const index = state[resource].findIndex((r) => {
-      return r.id === remark.id;
-    });
-
-    if (index === -1) { return; }
-
-    state[resource].splice(index, 1, remark);
-  },
-  [CLOSE_BOARD] (state) {
-    state.state = 'closed';
-  }
-};
-
-const actions = {
-  addRemark({commit, state}, {resource, content}) {
-    Client.createRemark(state.permalink, resource, content)
-  },
-  thumbsUp({state}, remarkId) {
-    Client.createReaction(state.permalink, remarkId)
-  },
-  removeRemark({state}, {resource, remarkId}) {
-    Client.removeRemark(state.permalink, resource, remarkId)
-  },
-  closeBoard({state}) {
-    Client.closeBoard(state.permalink)
-  }
-};
 
 module.exports = {fetchInitialState};

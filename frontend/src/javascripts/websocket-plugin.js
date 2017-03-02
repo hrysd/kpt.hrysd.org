@@ -1,6 +1,13 @@
 const pluralize   = require('pluralize');
 const ActionCable = require('actioncable');
 
+const {
+  ADD_REMARK,
+  REMOVE_REMARK,
+  THUMBS_UP,
+  CLOSE_BOARD,
+} = require('./mutation-types');
+
 function createCable(url) {
   return ActionCable.createConsumer(url);
 }
@@ -18,20 +25,20 @@ function createWebsocketPlugin(url, permalink) {
             case 'keep:created':
             case 'problem:created':
             case 'tri:created':
-              store.commit('ADD_REMARK', {resource: pluralize(data.kind), remark: data});
+              store.commit(ADD_REMARK, {resource: pluralize(data.kind), remark: data});
               break;
             case 'keep:deleted':
             case 'problem:deleted':
             case 'tri:deleted':
-              store.commit('REMOVE_REMARK', {resource: pluralize(data.kind), remarkId: data.id});
+              store.commit(REMOVE_REMARK, {resource: pluralize(data.kind), remarkId: data.id});
               break;
             case 'keep:reacted':
             case 'problem:reacted':
             case 'tri:reacted':
-              store.commit('THUMBS_UP', {resource: pluralize(data.kind), remark: data});
+              store.commit(THUMBS_UP, {resource: pluralize(data.kind), remark: data});
               break;
             case 'board:closed':
-              store.commit('CLOSE_BOARD');
+              store.commit(CLOSE_BOARD);
           }
         }
       }
