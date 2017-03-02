@@ -1,4 +1,4 @@
-module Api
+module API
   module Boards
     module Remarks
       class ReactionsController < ActionController::API

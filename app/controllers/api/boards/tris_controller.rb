@@ -1,6 +1,6 @@
-module Api
+module API
   module Boards
-    class TrisController < ActionController::API
+    class TrisController < APIController
       include RemarksMethods
 
       self.kind = :tri

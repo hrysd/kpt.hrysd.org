@@ -1,6 +1,6 @@
-module Api
+module API
   module Boards
-    class ProblemsController < ActionController::API
+    class ProblemsController < APIController
       include RemarksMethods
 
       self.kind = :problem

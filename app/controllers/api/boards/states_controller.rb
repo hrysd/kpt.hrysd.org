@@ -1,6 +1,6 @@
-module Api
+module API
   module Boards
-    class StatesController < ActionController::API
+    class StatesController < APIController
       include BoardFindMethod
 
       def update

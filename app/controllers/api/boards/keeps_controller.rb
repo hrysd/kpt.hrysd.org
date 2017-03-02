@@ -1,6 +1,6 @@
-module Api
+module API
   module Boards
-    class KeepsController < ActionController::API
+    class KeepsController < APIController
       include RemarksMethods
 
       self.kind = :keep
