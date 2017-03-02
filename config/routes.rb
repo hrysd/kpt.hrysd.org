@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   namespace :api do
     get ':permalink' => 'boards#show', as: :board
 
-    scope ':permalink', as: :board do
+    scope ':permalink', as: :board, module: :boards do
       resource :state, only: %i(update)
 
       resources :keeps,    only: %i(create destroy)
       resources :problems, only: %i(create destroy)
       resources :tris,     only: %i(create destroy)
 
-      resources :remarks, only: %i() do
+      resources :remarks, only: %i(), module: :remarks do
         resources :reactions, only: %i(create)
       end
     end

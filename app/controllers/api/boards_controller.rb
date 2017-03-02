@@ -1,5 +1,5 @@
-module Api
-  class BoardsController < ActionController::API
+module API
+  class BoardsController < APIController
     def show
       board = Board.find_by!(permalink: params[:permalink])
 

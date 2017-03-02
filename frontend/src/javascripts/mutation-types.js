@@ -1,0 +1,11 @@
+const ADD_REMARK    = 'ADD_REMARK';
+const REMOVE_REMARK = 'REMOVE_REMARK';
+const THUMBS_UP     = 'THUMBS_UP';
+const CLOSE_BOARD   = 'CLOSE_BOARD';
+
+module.exports = {
+  ADD_REMARK,
+  REMOVE_REMARK,
+  THUMBS_UP,
+  CLOSE_BOARD,
+}
