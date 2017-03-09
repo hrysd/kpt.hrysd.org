@@ -1,0 +1,5 @@
+class AddReactionsCountToRemarks < ActiveRecord::Migration[5.0]
+  def change
+    add_column :remarks, :reactions_count, :integer, null: false, default: 0
+  end
+end

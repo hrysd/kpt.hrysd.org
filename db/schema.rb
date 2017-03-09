@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224103931) do
+ActiveRecord::Schema.define(version: 20170309115650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 20170224103931) do
   end
 
   create_table "remarks", force: :cascade do |t|
-    t.integer  "kind",       null: false
-    t.string   "content",    null: false
-    t.integer  "board_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "kind",                        null: false
+    t.string   "content",                     null: false
+    t.integer  "board_id",                    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "reactions_count", default: 0, null: false
     t.index ["board_id"], name: "index_remarks_on_board_id", using: :btree
   end
 
