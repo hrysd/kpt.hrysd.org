@@ -32,6 +32,7 @@
     "actioncable": "^5.0.1",
     "axios": "0.15.3",
     "pluralize": "3.1.0",
+    "timer.js": "^1.0.4",
     "vue": "2.2.1",
     "vuex": "2.2.1"
   },

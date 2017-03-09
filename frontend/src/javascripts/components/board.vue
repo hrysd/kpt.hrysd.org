@@ -3,6 +3,8 @@
     <header id='header'>
       <h1>{{title}}</h1>
 
+      <timer></timer>
+
       <button class='close-button' v-if='state === "opened"' v-on:click='close'>
         <i class='fa fa-check' aria-hidden='true'></i>
         Close
@@ -29,11 +31,13 @@
 <script>
 const {mapState, mapActions} = require('vuex');
 
+const Timer           = require('./timer');
 const Remarks         = require('./remarks');
 const DisabledRemarks = require('./disabled-remarks');
 
 module.exports = {
   components: {
+    'timer': Timer,
     'remarks': Remarks,
     'disabled-remarks': DisabledRemarks
   },

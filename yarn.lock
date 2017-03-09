@@ -2558,6 +2558,10 @@ tar@~2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
+timer.js@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/timer.js/-/timer.js-1.0.4.tgz#18d72dc5cccc40a4eb393694b2f48de2a2a02819"
+
 timers-browserify@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.2.tgz#ab4883cf597dcd50af211349a00fbca56ac86b86"
