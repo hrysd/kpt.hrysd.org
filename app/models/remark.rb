@@ -11,9 +11,4 @@ class Remark < ApplicationRecord
     problem: 1,
     tri:     2 # XXX
   }
-
-  # TODO: Counter cache
-  def reactions_count
-    reactions.count
-  end
 end
