@@ -20,6 +20,11 @@ const RemarkForm = require('./remark-form');
 
 module.exports = {
   props: ['kind', 'resource'],
+  data() {
+    return {
+      currentLength: 0
+    }
+  },
   components: {
     remark: Remark,
     'remark-form': RemarkForm
@@ -29,16 +34,23 @@ module.exports = {
       return state[this.resource];
     }
   }),
+  created() {
+    this.currentLength = this.remarks.length;
+  },
   filters: {
     capitalize(value) {
-      if (!value) return ''
+      if (!value) return '';
 
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },
   watch: {
-    remarks() {
+    remarks(changed) {
+      if (this.currentLength === changed.length) { return; }
+
+      this.currentLength = changed.length;
+
       this.$nextTick(() => {
         const elem = this.$refs['list'];
         elem.scrollTop = elem.scrollHeight - elem.clientHeight;
