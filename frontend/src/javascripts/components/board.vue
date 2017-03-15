@@ -1,5 +1,10 @@
 <template>
   <div class='content'>
+    <button v-on:click='openModal'>export</button>
+    <modal v-if='showModal' v-on:onClose='this.showModal=false'>
+      <h1 slot='header'> hiihihihihgie</h1>
+    </modal>
+
     <header id='header'>
       <h1>{{title}}</h1>
 
@@ -31,11 +36,18 @@ const {mapState, mapActions} = require('vuex');
 
 const Remarks         = require('./remarks');
 const DisabledRemarks = require('./disabled-remarks');
+const Modal           = require('./modal');
 
 module.exports = {
   components: {
     'remarks': Remarks,
-    'disabled-remarks': DisabledRemarks
+    'disabled-remarks': DisabledRemarks,
+    'modal': Modal
+  },
+  data() {
+    return {
+      showModal: false
+    };
   },
   computed: mapState(['title','state']),
   methods: {
@@ -46,6 +58,9 @@ module.exports = {
       if (!confirmation) return;
 
       this.closeBoard();
+    },
+    openModal() {
+      this.showModal = true
     }
   }
 };
