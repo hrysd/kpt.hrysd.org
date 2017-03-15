@@ -1,10 +1,14 @@
 <template>
   <transition name='modal'>
     <div class='modal-mask'>
-      <div class='modal-wrapper' v-on:click='$emit("onClose")'>
+      <div class='modal-wrapper'>
         <div class='modal-container'>
           <div class='modal-header'>
             <slot name='header'></slot>
+
+            <button v-on:click='$emit("close")'>
+              <i class='fa fa-times' aria-hidden='true'></i>
+            </button>
           </div>
 
           <div class='modal-body'>
@@ -12,7 +16,7 @@
           </div>
 
           <div class='modal-footer'>
-            <slot name='footer'></slot>
+            <slot name='button'></slot>
           </div>
         </div>
       </div>
@@ -49,13 +53,26 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.modal-header h3 {
+.modal-header {
+  display: flex;
+}
+
+.modal-header h1 {
   margin-top: 0;
+  margin-right: auto;
   color: #42b983;
+}
+
+.modal-header button {
+  border: none;
 }
 
 .modal-body {
   margin: 20px 0;
+}
+
+.modal-footer {
+  text-align: center;
 }
 
 .modal-default-button {
