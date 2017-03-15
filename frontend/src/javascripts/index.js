@@ -6,12 +6,12 @@ const Board = require('./components/board');
 
 Vue.use(Vuex);
 
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
   const isBoard = document.getElementById('board');
 
   if (!isBoard) { return; }
 
-  const permalink = new URL(location).pathname.replace('/', '');
+  const permalink = (new URL(location)).pathname.replace('/', '');
 
   fetchInitialState(permalink).then((store) => {
     mount('#board', store)

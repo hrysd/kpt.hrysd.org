@@ -1,3 +1,5 @@
+require('whatwg-fetch')
+
 const {Store} = require('vuex').default;
 
 const actions   = require('./actions');
