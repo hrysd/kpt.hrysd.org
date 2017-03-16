@@ -124,7 +124,7 @@ button.thumbs-up:active, button.remove-button:active, button.close-button:active
   box-shadow: 0 -1px 1px rgba(0,0,0,0.25);
 }
 
-input {
+input, textarea {
   padding: 5px;
   width: 100%;
   border: 1px solid #ccc;
@@ -134,7 +134,12 @@ input {
   box-sizing: border-box;
 }
 
+textarea {
+  resize: none;
+}
+
 button, input[type=submit] {
+  cursor: pointer;
   padding: 5px;
   background-color: white;
   font-size: 1rem;
