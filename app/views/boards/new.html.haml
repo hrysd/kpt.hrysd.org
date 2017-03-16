@@ -6,6 +6,12 @@
     %h2 KPT を始める
 
     = form_for @board do |f|
+      - if f.object.errors.present?
+        .error-messages
+          %ul
+            - f.object.errors.full_messages.each do |message|
+              %li= message
+
       .form-item
         = f.label :title do
           タイトル

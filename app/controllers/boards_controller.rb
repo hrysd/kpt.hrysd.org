@@ -13,6 +13,8 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to board_path(@board)
     else
+      @board.clear_permalink
+
       render :new
     end
   end

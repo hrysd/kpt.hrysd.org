@@ -21,3 +21,12 @@
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      blank: は必須です
+      taken: はすでに存在しています
+  activerecord:
+    attributes:
+      board:
+        title: タイトル
+        permalink: パーマリンク

@@ -64,7 +64,7 @@ h2 {
   margin: 5px 0;
 }
 
-ul {
+.panel ul {
   flex: 1;
   overflow-y: scroll;
   list-style-type: none;
@@ -72,7 +72,7 @@ ul {
   margin: 0px;
 }
 
-li {
+.panel li {
   display: flex;
   align-items: center;
   word-break: break-all;
@@ -80,11 +80,11 @@ li {
   border-bottom: solid 1px #ccc;
 }
 
-li:nth-child(even) {
+.panel li:nth-child(even) {
   background-color: #ececec;
 }
 
-li p {
+.panel li p {
   margin: 0px;
   flex: 2;
 }
@@ -170,7 +170,7 @@ button:active, input[type=submit]:active {
 
 .new-kpt-form {
   flex: 1;
-  max-width: 540px;
+  min-width: 40%;
   margin: 0 auto;
   padding-top: 30px;
 }
@@ -197,4 +197,11 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+.error-messages {
+  background: #E25926;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 10px;
 }

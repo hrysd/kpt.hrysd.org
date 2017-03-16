@@ -9,12 +9,16 @@ class Board < ApplicationRecord
   enum state: {opened: 0, closed: 1}
 
   validates :title,     presence: true, length: {maximum: 255}
-  validates :permalink, presence: true, length: {maximum: 255}
+  validates :permalink, presence: true, length: {maximum: 255}, uniqueness: true
 
   before_validation :set_permalink
 
   def to_param
     permalink
+  end
+
+  def clear_permalink
+    self.permalink = nil
   end
 
   private
