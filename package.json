@@ -24,6 +24,7 @@
     "babel-loader": "6.3.2",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
     "css-loader": "0.26.2",
+    "uglify-js": "github:mishoo/UglifyJS2#harmony",
     "vue-loader": "11.1.3",
     "vue-template-compiler": "2.2.1",
     "webpack": "2.2.1"
