@@ -8,8 +8,6 @@ class Board < ApplicationRecord
 
   enum state: {opened: 0, closed: 1}
 
-  scope :created_at_asc, -> { order(created_at: :asc) }
-
   validates :title,     presence: true, length: {maximum: 255}
   validates :permalink, presence: true, length: {maximum: 255}, uniqueness: true
 

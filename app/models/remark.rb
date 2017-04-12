@@ -12,6 +12,8 @@ class Remark < ApplicationRecord
     tri:     2 # XXX
   }
 
+  scope :created_at_asc, -> { order(created_at: :asc) }
+
   # TODO: Counter cache
   def reactions_count
     reactions.count
