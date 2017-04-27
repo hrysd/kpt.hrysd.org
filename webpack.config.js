@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path    = require('path');
 
+const {RAILS_ENV} = process.env;
+
 module.exports = {
   entry: './frontend/src/javascripts/index.js',
   output: {
@@ -26,9 +28,14 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.RAILS_ENV)
+        'NODE_ENV': JSON.stringify(RAILS_ENV)
       }
-    })
+    }),
+    ...(
+      RAILS_ENV ? [
+        new webpack.optimize.UglifyJsPlugin({})
+      ] : []
+    )
   ],
   devtool: 'inline-source-map'
 }
