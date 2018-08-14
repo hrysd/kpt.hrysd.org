@@ -19,6 +19,11 @@ group :development do
   gem 'byebug', group: :test
 end
 
+group :test do
+  gem 'rspec-rails', group: :development
+  gem 'factory_bot_rails', group: :development
+end
+
 group :production do
   gem 'sentry-raven'
 end
