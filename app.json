@@ -7,12 +7,6 @@
     "LANG": {
       "required": true
     },
-    "LETS_ENCRYPT_REQUEST_KEY": {
-      "required": true
-    },
-    "LETS_ENCRYPT_RESPONSE_KEY": {
-      "required": true
-    },
     "RACK_ENV": {
       "required": true
     },
