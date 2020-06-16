@@ -47,4 +47,5 @@
         "heroku-redis:hobby-dev"
       ]
     }
+  }
 }
