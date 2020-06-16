@@ -1,24 +1,13 @@
-# README
+# kpt.hrysd.org
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+URL: https://kpt.hrysd.org
 
-Things you may want to cover:
+## How to development
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ docker run -d  -p 5432:5432 postgres:latest
+$ bundle install
+$ yarn install
+$ yarn run watch
+$ bundle exec rails server
+```
