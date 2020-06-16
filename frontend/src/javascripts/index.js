@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   if (!isBoard) { return; }
 
-  const permalink = (new URL(location)).pathname.replace('/', '');
+  const permalink = (new URL(location)).pathname.replace('/b/', '');
 
   fetchInitialState(permalink).then((store) => {
     mount('#board', store)

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root to: 'boards#new'
 
-  get ':permalink' => 'boards#show', as: :board
+  get ':permalink' => 'boards#fallback'
+
+  scope 'b' do
+    get ':permalink' => 'boards#show', as: :board
+  end
 
   resources :boards, param: :permalink, only: %i(create)
 

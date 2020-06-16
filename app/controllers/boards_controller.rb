@@ -3,6 +3,12 @@ class BoardsController < ApplicationController
     @board = Board.find_by!(permalink: params[:permalink])
   end
 
+  def fallback
+    board = Board.find_by!(permalink: params[:permalink])
+
+    redirect_to board_path(board)
+  end
+
   def new
     @board = Board.new
   end
