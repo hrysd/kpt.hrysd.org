@@ -24,6 +24,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  get '.well-known/acme-challenge/:id' => 'letsencrypt#show'
 end
