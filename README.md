@@ -5,9 +5,11 @@ URL: https://kpt.hrysd.org
 ## How to development
 
 ```
-$ docker run -d  -p 5432:5432 postgres:latest
-$ bundle install
-$ yarn install
-$ yarn run watch
-$ bundle exec rails server
+$ docker-compose build
+$ docker-compose run --rm rails bundle install
+$ docker-compose run --rm frontend yarn install
+$ docker-compose run --rm rails bin/rails db:setup
+$ docker-compose up
 ```
+
+then open http://localhost:3000
